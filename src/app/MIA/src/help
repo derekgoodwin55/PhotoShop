@@ -1,0 +1,45 @@
+Using the MIA Application from the command line
+
+Display help (determine your own good format for a useful help message):
+
+./build/MIA/bin/MIA -h
+
+Convert an image in JPG format to PNG format (please also support png to jpg):
+
+./build/MIA/bin/MIA in.jpg out.png
+
+Sharpen an image by amount 5 (corresponds to the parameter you can specify in the iteration #2 GUI) and save the output to a new image:
+
+./build/MIA/bin/MIA in.png –sharpen 5 out.png
+
+Sharpen an image by amount 5, then run an edge detection filter, then save the output to a new image (this example just shows two filter operations, but you need to support an arbitrary number of filter operations that are specified in order they should be applied):
+
+./build/MIA/bin/MIA in.png –sharpen 5 –edge out.png
+
+Apply commands to each image in a sequence that matches the naming scheme ###. (where ### is a three-digit number from 000 to 999):
+
+./build/MIA/bin/MIA resources/test-images/brainstack/mrbrain-8bit###.png –sharpen 5 output/sharp-brain###.jpg
+
+Since it will be a useful utility for the automated testing discussed in the next section, also implement a very simple command that prints “1” if the two images are identical and prints “0” if they are different (make sure that no additional debug text is printed) :
+
+./build/MIA/bin/MIA image1.png –compare image2.png
+
+Complete list of command-line arguments:
+
+-h
+
+-sharpen float
+
+-edge
+
+-threshold float
+
+-quantize int
+
+-blur float
+
+-saturate float
+
+-channel float float float
+
+-compare

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta charset = "utf-8">
+	<title> CT Scan Tutorial </title>
+	<link class = "page" rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+<nav>
+  <a href="index.html" class = "page"> Home </a> |
+	<a href="usersupport.html" class = "page"> User Support </a> |
+	<a href="developersupport.html" class = "page"> Developer Support</a>
+</nav>
+
+
+<h1> Creating a CT Scan </h1>
+
+<p style = "text-align:center;"><img src = "images/CTScan.jpg" alt = " obtained from http://media.salon.com/2013/07/shutterstock_144723271.jpg"
+  style = "width:400px;height400px;"></p>
+
+<br>
+
+<h2>Instructions on How to Simulate a CT Scan Using our MIA Application</h2>
+
+<br>
+
+<h3>Using the Graphical User Interface: </h3>
+
+<h4>Step One</h4>
+<p style="margin-left:20px;">Navigate to the mian directory of our program.</p>
+<p style = "padding-left:100px;"><img src = "images/directory.png" alt = " dir"
+  style = "width:1000px;height1000px;"></p>
+	<br>
+<p style="margin-left:20px;">Build the program with make by typing "make" into the terminal.</p>
+<p style = "padding-left:100px;"><img src = "images/make.png" alt = " make"
+  style = "width:1000px;height1000px;"></p>
+	<br>
+<p style="margin-left:20px;">If this doesn't initially work, type "mkdir build" to create a build directory.</p>
+<p style="margin-left:20px;">Run the executable (program) with ./build/MIA/bin/MIA</p>
+<p style = "padding-left:100px;"><img src = "images/buildcmd.png" alt = " build"
+  style = "width:1000px;height1000px;"></p>
+	<br>
+<p style="margin-left:20px;">If done correctly, the GUI will pop up and look like the following below:</p>
+<p style = "padding-left:100px;"><img src = "images/built.png" alt = " done"
+  style = "width:1000px;height1000px;"></p>
+
+<br>
+
+<h4>Step Two</h4>
+<p style="margin-left:20px;"> Load the image. </p>
+<p style="margin-left:20px;">This can be done by using the IMAGE I/O menu, finding the correct image you want to load, double clicking the image and then clicking the "Load Image" button.</p>
+<p style = "padding-left:100px;"><img src = "images/load.png" alt = " done"
+  style = "width:1000px;height1000px;"></p>
+
+<br>
+
+<h4>Step Two</h4>
+<p style="margin-left:20px;">Blur the image slightly (to reduce noise).</p>
+<p style="margin-left:20px;">The range is 0.0-20.0. We recommend blurring by 1.0.</p>
+<p style = "padding-left:100px;"><img src = "images/blur.png" alt = " done"
+  style = "width:1000px;height1000px;"></p>
+
+<br>
+
+<h4>Step Three</h4>
+<p style="margin-left:20px;">Quantize the image into 4 segments. This will split the colors(rgb) into ranges of 0-25, 25-50, 50-75 and 75-100 and changes the colors accordingly.</p>
+<p style = "padding-left:100px;"><img src = "images/q4.png" alt = " done"
+  style = "width:1000px;height1000px;"></p>
+
+<br>
+
+<h4>Step Four</h4>
+<p style="margin-left:20px;">Save the image to a new directory by clicking the save image button in the program.</p>
+<p style="margin-left:20px;">If there is not already a filename (with which to save), type a desired filename followed by either a ".jpg" or ".png" extension.</p>
+<p style="margin-left:20px;">You can (and we recommend) that you save the image to a specific directory (file). This can be done by adding <i>filename/</i> before the image save name.</p>
+<p style = "padding-left:100px;"><img src = "images/outfile.png" alt = " done"
+  style = "width:1000px;height1000px;"></p>
+<br>
+
+<h3>Using the Command Line Interface: </h3>
+
+<h4 style = "color:red;">Things to Complete Before Running a CT Scan on a Set of Images:</h4>
+<p style="margin-left:20px;">Make sure all of your images follow the correct naming convention of:</p>
+<p style="margin-left:60px;"><i>filename###.extension</i> Where ### is a numerical sequence amongst your images from 000 - 999. Make sure the extension is the same for all of the images ("png" or "jpg").</p>
+<p style="margin-left:20px;">Make sure you are in the correct directory. If unsure, follow the tutorial found on the Command line link found in our User Support page.</p>
+<p style="margin-left:20px;"> Create a folder where you want to store all your saved images by typing into the command line: mkdir <i>"directory_name".</i></p>
+<br>
+<h4>The Only Required Step:</h4>
+<p style="margin-left:20px;">In the Command line, type the following to perform the CT Scan set of operations:</p>
+<p style="margin-left:60px;font-weight:bold;"> ./build/MIA/bin/MIA <i>image_name###.extension</i> -blur 1.0 -quantize 4 <i>new_directory/outfile###.extension</i> </p>
+<p style = "text-align:center;"><img src = "images/CMDs.png" alt = " done"
+  style = "width:1500px;height1500px;"></p>
+
+<br>
+
+<div class = "footer">
+	<span class="copyright">&copy; 2016, CSCI 3081 Derek Goodwin, Andrew Bostrom and Michael Major</span>
+</div>
+
+</body>
+
+</html>

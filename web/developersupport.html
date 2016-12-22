@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta charset = "utf-8">
+	<title> Developer Support </title>
+	<link class = "page" rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+<div id = "developerPage">
+  <nav>
+			<a href="index.html" class = "page"> Home</a> |
+			<a href="usersupport.html" class = "page"> User Support </a> |
+			<span class = "page"> Developer Support </span>
+	</nav>
+
+	<div class = "content">
+		<h1>Developer Support</h1>
+
+		<br>
+
+		<h2>Welcome to our Developer Support Page</h2>
+		<p>Below you will find links to source code and filters.</p>
+		<h3>Resources</h3>
+		<ul>
+			<li><a class = "link" href="../doc/Doxyfile">Doxygen Documentation</a></li>
+			<li><a class = "link" href="addingANewTool.html">Adding a New Tool</a></li>
+			<li><a class = "link" href="addingANewFilter.html">Adding a New Filter</a></li>
+			<li><a class = "link" href="projectDesignSubPage.html">Project Design Subpage</a></li>
+		</ul>
+
+		<img id = "devPic" src = "images/developers.png" alt = " obtained from
+		http://cdn.shopify.com/s/files/1/0553/3925/products/logo_developers.png?v=1432756867" style = "width:300px;height300px;">
+
+  <br>
+	<h2>Links to All of the MIA and FlashPhoto Code:</h2>
+
+	<h3 style = "color:blue;">FlashPhoto:</h3>
+
+<div id = "FPlinks">
+<a href="../src/lib/libimgtools/src/base_gfx_app.cc">base_gfx_app.cc</a>
+	<p style="margin-left:20px;color:#708090;font-weight:bold;">Description: This is our controller class. It contains an initializer function for GLUI as well as keyboard and mouse interaction functions.</p>
+		<div style = "color:#000080;">
+			<p style="margin-left:40px;">Functions:</p>
+			<p style="margin-left:100px;">void BaseGfxApp::Init(int argc, char* argv[], int x,
+		                      int y, unsigned glut_flags, bool create_glui_win,
+		                      int glui_win_x, int glui_win_y)</p>
+		<p style="margin-left:100px;">void BaseGfxApp::set_caption(const std::string& caption)</p>
+		<p style="margin-left:100px;">void BaseGfxApp::RunMainLoop(void)</p>
+		<p style="margin-left:100px;">void BaseGfxApp::Reshape(int width, int height)</p>
+		<p style="margin-left:100px;">void BaseGfxApp::RenderOneFrame(void)</p>
+		<p style="margin-left:100px;">void BaseGfxApp::DrawPixels(int start_x, int start_y, int width,
+                            int height, void const * const pixels)</p>
+		<p style="margin-left:100px;">void BaseGfxApp::s_reshape(int width, int height)</p>
+		<p style="margin-left:100px;">void BaseGfxApp::s_keyboard(unsigned char c, int x, int y)</p>
+		<p style="margin-left:100px;">void BaseGfxApp::s_keyboardspecial(int key, int x, int y)</p>
+		<p style="margin-left:100px;">void BaseGfxApp::s_keyboardup(unsigned char c, int x, int y)</p>
+		<p style="margin-left:100px;">void BaseGfxApp::s_keyboardspecialup(int key, int x, int y)</p>
+		<p style="margin-left:100px;">void BaseGfxApp::s_mousemotion(int x, int y)</p>
+		<p style="margin-left:100px;">void BaseGfxApp::s_mousebtn(int b, int s, int x, int y)</p>
+		<p style="margin-left:100px;">void BaseGfxApp::s_draw(void)</p>
+		<p style="margin-left:100px;">void BaseGfxApp::s_gluicallback(int control_id)</p>
+		<p style="margin-left:100px;">void BaseGfxApp::s_idle(void)</p>
+		<p style="margin-left:100px;">void BaseGfxApp::SetWindowDimensions(int width, int height)</p>
+		<br>
+	</div>
+
+<a href="../src/lib/libimgtools/src/color_data.cc">color_data.cc</a>
+	<p style="margin-left:20px;color:#708090;font-weight:bold;">Description: This is the superclass to all color. Pixelbuffers are created with this class as a third argument. This is where pixel values are changed.</p>
+    <div style = "color:#000080;">
+	    <p style="margin-left:40px;">Functions:</p>
+			  <p style="margin-left:100px;">float ColorData::luminance(void)</p>
+				<p style="margin-left:100px;">ColorData ColorData::clamped_color(void)</p>
+				<p style="margin-left:100px;">ColorData operator* (const ColorData& a, float f)</p>
+				<p style="margin-left:100px;">ColorData operator+ (const ColorData& a, float f)</p>
+				<p style="margin-left:100px;">ColorData operator- (const ColorData& a, float f)</p>
+			<br>
+    </div>
+
+<a href="../src/lib/libimgtools/src/f_channel.cc">f_channel.cc</a>
+  <p style="margin-left:20px;color:#708090;font-weight:bold;">Description: This class creates pixels for the channel filter.</p>
+    <div style = "color:#000080;">
+      <p style="margin-left:40px;">Functions:</p>
+			<p style="margin-left:100px;">ColorData FChannel::GeneratePixel(const PixelBuffer & buffer,
+                                 int x, int y)</p>
+		<br>
+    </div>
+
+	<a href="../src/lib/libimgtools/src/filter.cc">filter.cc</a>
+	<p style="margin-left:20px;color:#708090;font-weight:bold;">Description: This class generates pixels for our filters.</p>
+	<div style = "color:#000080;">
+	<p style="margin-left:40px;">Functions:</p>
+	<p style="margin-left:100px;">PixelBuffer *Filter::GeneratePixel(const PixelBuffer & buffer,
+	                                 int x, int y)</p>
+	<br>
+</div>
+
+
+	<a href="../src/lib/libimgtools/src/filter_convolve.cc">filter_convolve.cc</a>
+	<p style="margin-left:20px;color:#708090;font-weight:bold;">Description: This class creates pixels for the convlove filter.</p>
+		<div style = "color:#000080;">
+	<p style="margin-left:40px;">Functions:</p>
+	<p style="margin-left:100px;">ColorData FilterConvolve::GeneratePixel(const PixelBuffer &buffer,
+                                        int x, int y)</p>
+	<br>
+	</div>
+
+
+	<a href="../src/lib/libimgtools/src/filter_factory.cc">filter_factory.cc</a>
+	<p style="margin-left:20px;color:#708090;font-weight:bold;">Description: This is the superclass for creating filters.</p>
+		<div style = "color:#000080;">
+	<p style="margin-left:40px;">Functions:</p>
+	<p style="margin-left:100px;">Filter*  FilterFactory::CreateFilter(int filter_id,
+                                     int param_count, ...)</p>
+  <p style="margin-left:100px;">void FilterFactory::ApplyFilter(const Filter& f, PixelBuffer ** buffer)</p>
+<br>
+</div>
+
+
+	<a href="../src/app/FlashPhoto/src/flashphoto_app.cc">flashphoto_app.cc</a>
+	<p style="margin-left:20px;color:#708090;font-weight:bold;">Description: This is a very
+		 important class that controls the GLUI for FlashPhoto, and contains all of
+		 our interactive functions based on mouse actions. It is only used by FlashPhoto and not MIA.</p>
+			<div style = "color:#000080;">
+	<p style="margin-left:40px;">Functions:</p>
+	<p style="margin-left:100px;">void FlashPhotoApp::Init(int argc, char* argv[], int x, int y,
+    ColorData background_color)</p>
+		<p style="margin-left:100px;">void FlashPhotoApp::Display(void)</p>
+		<p style="margin-left:100px;">void FlashPhotoApp::MouseMoved(int x, int y)</p>
+		<p style="margin-left:100px;">void FlashPhotoApp::LeftMouseDown(int x, int y)</p>
+		<p style="margin-left:100px;">void FlashPhotoApp::LeftMouseUp(int x, int y)</p>
+		<p style="margin-left:100px;">void FlashPhotoApp::InitializeBuffers(ColorData background_color,
+                                      int width, int height)</p>
+		<p style="margin-left:100px;">void FlashPhotoApp::InitGlui(void)</p>
+		<p style="margin-left:100px;">void FlashPhotoApp::GluiControl(int control_id)</p>
+		<p style="margin-left:100px;">void FlashPhotoApp::update_colors(void)</p>
+		<p style="margin-left:100px;">void FlashPhotoApp::InitGraphics(void)</p>
+<br>
+	</div>
+
+
+	<a href="../src/lib/libimgtools/src/float_matrix.cc">float_matrix.cc</a>
+	<p style="margin-left:20px;color:#708090;font-weight:bold;">Description: This class performs calculations.</p>
+				<div style = "color:#000080;">
+	<p style="margin-left:40px;">Functions:</p>
+	<p style="margin-left:100px;">float FloatMatrix::value(int x, int y)</p>
+	<p style="margin-left:100px;">void FloatMatrix::value(int x, int y, float v)</p>
+	<p style="margin-left:100px;">void FloatMatrix::operator*(const float c)</p>
+<br>
+</div>
+
+
+	<a href="../src/lib/libimgtools/src/f_quantize.cc">f_quantize.cc</a>
+	<p style="margin-left:20px;color:#708090;font-weight:bold;">Description: This class creates pixels for the quantize filter.</p>
+	<div style = "color:#000080;">
+	<p style="margin-left:40px;">Functions:</p>
+	<p style="margin-left:100px;">ColorData FQuantize::GeneratePixel(const PixelBuffer &buffer,
+                                    int x, int y)</p>
+<br>
+</div>
+
+	<a href="../src/lib/libimgtools/src/f_saturate.cc">f_saturate.cc</a>
+	<p style="margin-left:20px;color:#708090;font-weight:bold;">Description: This class creates pixels for the saturate filter.</p>
+	<div style = "color:#000080;">
+	<p style="margin-left:40px;">Functions:</p>
+	<p style="margin-left:100px;">ColorData FSaturate::GeneratePixel(const PixelBuffer &buffer,
+                                    int x, int y)</p>
+<br>
+</div>
+
+
+	<a href="../src/lib/libimgtools/src/f_special.cc">f_special.cc</a>
+	<p style="margin-left:20px;color:#708090;font-weight:bold;">Description: This class creates pixels for the special filter.</p>
+		<div style = "color:#000080;">
+	<p style="margin-left:40px;">Functions:</p>
+	<p style="margin-left:100px;">ColorData FSpecial::GeneratePixel(const PixelBuffer &buffer,
+                                   const PixelBuffer &blurred_buffer, int x, int y)</p>
+	<p style="margin-left:100px;">PixelBuffer *FSpecial::GenerateFilteredBuffer(
+    const PixelBuffer & input_buffer)</p>
+<br>
+	</div>
+
+
+	<a href="../src/lib/libimgtools/src/f_threshold.cc">f_threshold.cc</a>
+	<p style="margin-left:20px;color:#708090;font-weight:bold;">Description: This class creates pixels for the threshold filter.</p>
+	<div style = "color:#000080;">
+<p style="margin-left:40px;">Functions:</p>
+<p style="margin-left:100px;">ColorData FThreshold::GeneratePixel(const PixelBuffer &buffer,
+                                    int x, int y)</p>
+<br>
+</div>
+
+	<a href="../src/lib/libimgtools/src/image_handler.cc">image_handler.cc</a>
+	<p style="margin-left:20px;color:#708090;font-weight:bold;">Description: This class controls image loading and saving.</p>
+	<div style = "color:#000080;">
+	<p style="margin-left:40px;">Functions:</p>
+	<p style="margin-left:100px;">PixelBuffer* ImageHandler::LoadImage(const std::string & file_name)</p>
+	<p style="margin-left:100px;">bool ImageHandler::SaveImage(const std::string & file_name,
+                             const PixelBuffer* buffer)</p>
+	<p style="margin-left:100px;">ImageHandler::IMAGE_TYPE ImageHandler::image_type(
+    const std::string & file_name)</p>
+<br>
+</div>
+
+
+	<a href="../src/lib/libimgtools/src/i_png_handler.cc">i_png_handler.cc</a>
+	<p style="margin-left:20px;color:#708090;font-weight:bold;">Description: This class has functions to control loading and saving of png images.</p>
+	<div style = "color:#000080;">
+<p style="margin-left:40px;">Functions:</p>
+<p style="margin-left:100px;">PixelBuffer* IPNGHandler::LoadImage(const std::string fileName)</p>
+<p style="margin-left:100px;">bool IPNGHandler::SaveImage(const std::string file_name,
+                            const PixelBuffer* buffer_in)</p>
+<br>
+</div>
+
+
+	<a href="../src/lib/libimgtools/src/k_edge.cc">k_edge.cc</a>
+	<p style="margin-left:20px;color:#708090;font-weight:bold;">Description: This class gets the intensity for our kernal.</p>
+	<div style = "color:#000080;">
+<p style="margin-left:40px;">Functions:</p>
+<p style="margin-left:100px;">float KEdge::get_intensity(int x, int y, float radius)</p>
+<br>
+</div>
+
+
+	<a href="../src/lib/libimgtools/src/kernel.cc">kernel.cc</a>
+	<p style="margin-left:20px;color:#708090;font-weight:bold;">Description: This class controls actions for our filters.</p>
+	<div style = "color:#000080;">
+<p style="margin-left:40px;">Functions:</p>
+<p style="margin-left:100px;">float Kernel::sum()</p>
+<p style="margin-left:100px;">std::ostream& Kernel::operator&lt;&lt;(std::ostream& s) </p>
+<p style="margin-left:100px;">void Kernel::NormalizeKernel()</p>
+<p style="margin-left:100px;">void Kernel::GenerateKernel()</p>
+<br>
+</div>
+
+
+	<a href="../src/lib/libimgtools/src/k_gaussian.cc">k_gaussian.cc</a>
+	<p style="margin-left:20px;color:#708090;font-weight:bold;">Description: This class gets the intensity for our kernal which is used in some filters.</p>
+	<div style = "color:#000080;">
+<p style="margin-left:40px;">Functions:</p>
+<p style="margin-left:100px;">float KGaussian::get_intensity(int x, int y, float radius)</p>
+<br>
+</div>
+
+
+	<a href="../src/lib/libimgtools/src/k_motion_blur.cc">k_motion_blur.cc</a>
+	<p style="margin-left:20px;color:#708090;font-weight:bold;">Description: This class gets the intensity for our kernal which is used in some filters.</p>
+	<div style = "color:#000080;">
+<p style="margin-left:40px;">Functions:</p>
+<p style="margin-left:100px;">float KMotionBlur::get_intensity(int x, int y, float radius)</p>
+<br>
+</div>
+
+
+	<a href="../src/lib/libimgtools/src/k_sharpen.cc">k_sharpen.cc</a>
+	<p style="margin-left:20px;color:#708090;font-weight:bold;">Description: This class sharpens pixels for the sharpen filter.</p>
+	<div style = "color:#000080;">
+<p style="margin-left:40px;">Functions:</p>
+<p style="margin-left:100px;">KSharpen::KSharpen(float sigma) : KGaussian(sigma)</p>
+<br>
+</div>
+
+
+	<a href="../src/app/FlashPhoto/src/main.cc">main.cc</a>
+	<p style="margin-left:20px;color:#708090;font-weight:bold;">Description: This is the main function which initiates FlashPhoto.</p>
+	<div style = "color:#000080;">
+<p style="margin-left:40px;">Functions:</p>
+<p style="margin-left:100px;">int main(int argc, char* argv[])</p>
+<br>
+</div>
+
+
+	<a href="../src/lib/libimgtools/src/mask.cc">mask.cc</a>
+	<p style="margin-left:20px;color:#708090;font-weight:bold;">Description: This class generates a mask based on which tool is in use. The masks contain a float array of pixels from values 0 - 1</p>
+	<div style = "color:#000080;">
+<p style="margin-left:40px;">Functions:</p>
+<p style="margin-left:100px;">void Mask::GenerateMask(void)</p>
+<br>
+</div>
+
+
+	<a href="../src/lib/libimgtools/src/m_constant.cc">m_constant.cc</a>
+	<p style="margin-left:20px;color:#708090;font-weight:bold;">Description: This class gets the intensity for the kernal.</p>
+	<div style = "color:#000080;">
+<p style="margin-left:40px;">Functions:</p>
+<p style="margin-left:100px;">float MConstant::get_intensity(int x, int y, float radius)</p>
+<br>
+</div>
+
+
+	<a href="../src/lib/libimgtools/src/m_linear.cc">m_linear.cc</a>
+	<p style="margin-left:20px;color:#708090;font-weight:bold;">Description: This class gets the intensity for the kernal.</p>
+	<div style = "color:#000080;">
+<p style="margin-left:40px;">Functions:</p>
+<p style="margin-left:100px;">float MLinear::get_intensity(int x, int y, float radius)</p>
+<br>
+</div>
+
+
+	<a href="../src/lib/libimgtools/src/m_oval.cc">m_oval.cc</a>
+	<p style="margin-left:20px;color:#708090;font-weight:bold;">Description: This class gets the intensity for the kernal.</p>
+	<div style = "color:#000080;">
+<p style="margin-left:40px;">Functions:</p>
+<p style="margin-left:100px;">float MOval::get_intensity(int x, int y, float radius)</p>
+<br>
+</div>
+
+
+	<a href="../src/lib/libimgtools/src/pixel_buffer.cc">pixel_buffer.cc</a>
+	<p style="margin-left:20px;color:#708090;font-weight:bold;">Description: This
+		class controls the canvas. It create a new pixel buffer (canvas) and overwrites the previous one.</p>
+	<div style = "color:#000080;">
+<p style="margin-left:40px;">Functions:</p>
+<p style="margin-left:100px;">ColorData PixelBuffer::get_pixel(int x, int y) const</p>
+<p style="margin-left:100px;">void PixelBuffer::set_pixel(int x, int y, const ColorData& new_pixel)</p>
+<p style="margin-left:100px;">PixelBuffer& PixelBuffer::operator=</p>
+<br>
+</div>
+
+
+	<a href="../src/lib/libimgtools/src/state_manager.cc">state_manager.cc</a>
+	<p style="margin-left:20px;color:#708090;font-weight:bold;">Description: This class controls the state of the program and allow for Undo and Redo.</p>
+	<div style = "color:#000080;">
+<p style="margin-left:40px;">Functions:</p>
+<p style="margin-left:100px;">void StateManager::InitGlui(const GLUI *const glui,
+                            void (*s_gluicallback)(int))</p>
+<p style="margin-left:100px;">void StateManager::UndoOperation(PixelBuffer **display_buffer)</p>
+<p style="margin-left:100px;">void StateManager::RedoOperation(PixelBuffer **display_buffer)</p>
+<p style="margin-left:100px;">PixelBuffer* StateManager::CommitState(PixelBuffer *display_buffer)</p>
+<br>
+</div>
+
+
+	<a href="../src/lib/libimgtools/src/t_blur.cc">t_blur.cc</a>
+	<p style="margin-left:20px;color:#708090;font-weight:bold;">Description: This class changes the state of the canvas by processing neighboring pixels.</p>
+	<div style = "color:#000080;">
+<p style="margin-left:40px;">Functions:</p>
+<p style="margin-left:100px;">ColorData TBlur::process_pixel(int mask_x, int mask_y, ColorData tool_color,
+                              PixelBuffer *buffer, int buffer_x, int buffer_y)</p>
+<br>
+</div>
+
+
+	<a href="../src/lib/libimgtools/src/t_chalk.cc">t_chalk.cc</a>
+	<p style="margin-left:20px;color:#708090;font-weight:bold;">Description: This class performs math for our chalk tool.</p>
+	<div style = "color:#000080;">
+<p style="margin-left:40px;">Functions:</p>
+<p style="margin-left:100px;">ColorData TChalk::color_blend_math</p>
+<br>
+</div>
+
+
+	<a href="../src/lib/libimgtools/src/t_eraser.cc">t_eraser.cc</a>
+	<p style="margin-left:20px;color:#708090;font-weight:bold;">Description: This class performs math for our eraser tool.</p>
+	<div style = "color:#000080;">
+<p style="margin-left:40px;">Functions:</p>
+<p style="margin-left:100px;">ColorData TEraser::color_blend_math</p>
+<br>
+</div>
+
+
+	<a href="../src/lib/libimgtools/src/t_highlighter.cc">t_highlighter.cc</a>
+	<p style="margin-left:20px;color:#708090;font-weight:bold;">Description: This class performs math for our highlighter tool.</p>
+	<div style = "color:#000080;">
+<p style="margin-left:40px;">Functions:</p>
+<p style="margin-left:100px;">ColorData THighlighter::color_blend_math</p>
+<br>
+</div>
+
+
+	<a href="../src/lib/libimgtools/src/tool.cc">tool.cc</a>
+	<p style="margin-left:20px;color:#708090;font-weight:bold;">Description: This class applies pixels to the pixelbuffer based on current tool.</p>
+	<div style = "color:#000080;">
+<p style="margin-left:40px;">Functions:</p>
+<p style="margin-left:100px;">ColorData Tool::color_blend_math(float mask_pixel_amount,
+    ColorData tool_color, ColorData current_color, ColorData background_color)</p>
+<p style="margin-left:100px;">ColorData Tool::process_pixel(int mask_x, int mask_y, ColorData tool_color,
+                             PixelBuffer* buffer, int buffer_x, int buffer_y)</p>
+<p style="margin-left:100px;">void Tool::ApplyToBuffer(int tool_x, int tool_y,
+														                          ColorData tool_color, PixelBuffer *buffer)</p>
+<br>
+</div>
+
+
+	<a href="../src/lib/libimgtools/src/tool_factory.cc">tool_factory.cc</a>
+	<p style="margin-left:20px;color:#708090;font-weight:bold;">Description: This is a controller class for all of the tools.</p>
+	<div style = "color:#000080;">
+<p style="margin-left:40px;">Functions:</p>
+<p style="margin-left:100px;">Tool* ToolFactory::CreateTool(int toolID)</p>
+<br>
+</div>
+
+
+  <a href="../src/lib/libimgtools/src/t_stamp.cc">t_stamp.cc</a>
+	<p style="margin-left:20px;color:#708090;font-weight:bold;">Description: This class performs math for the stamp tool.</p>
+	<div style = "color:#000080;">
+<p style="margin-left:40px;">Functions:</p>
+<p style="margin-left:100px;">ColorData TStamp::process_pixel(int maskx, int masky, ColorData toolcolor,
+                               PixelBuffer* buffer, int bufferx, int buffery)</p>
+<br>
+</div>
+</div>
+
+<br>
+<br>
+
+	<h3 style = "color:blue;">MIA:</h3>
+
+<div id = "MIAlinks">
+	<a href="../src/app/MIA/src/mia_app.cc">mia_app.cc</a>
+	<p style="margin-left:20px;color:#708090;font-weight:bold;">Description: This is the controller class for MIA.</p>
+		<div style = "color:#000080;">
+	<p style="margin-left:40px;">Functions:</p>
+	<p style="margin-left:100px;">void MIAApp::Init(int argc, char* argv[],
+    int x, int y, ColorData background_color)</p>
+	<p style="margin-left:100px;">void MIAApp::Display(void)</p>
+	<p style="margin-left:100px;">void MIAApp::LeftMouseDown(int x, int y)</p>
+	<p style="margin-left:100px;">void MIAApp::InitializeBuffers(ColorData background_color,
+                               int width, int height)</p>
+	<p style="margin-left:100px;">void MIAApp::InitGlui(void)</p>
+	<p style="margin-left:100px;">void MIAApp::GluiControl(int control_id)</p>
+	<p style="margin-left:100px;">void MIAApp::InitGraphics(void)</p>
+	<br>
+</div>
+
+
+	<a href="../src/app/MIA/src/main.cc">main.cc</a>
+	<p style="margin-left:20px;color:#708090;font-weight:bold;">Description: This class initiates the MIA program. It allows for special commands based on the values of arc and argv[] from command line execution.</p>
+			<div style = "color:#000080;">
+	<p style="margin-left:40px;">Functions:</p>
+	<p style="margin-left:100px;">int main(int argc, char** argv)</p>
+	<br>
+</div>
+
+
+	<a href="../src/app/MIA/src/mia_filter_manager.cc">mia_filter_manager.cc</a>
+	<p style="margin-left:20px;color:#708090;font-weight:bold;">Description: This class contains all filters for MIA.</p>
+				<div style = "color:#000080;">
+	<p style="margin-left:40px;">Functions:</p>
+	<p style="margin-left:100px;">GLUI_Panel* MIAFilterManager::InitGlui(const GLUI *const glui,
+                             void (*s_gluicallback)(int))</p>
+	<p style="margin-left:100px;">void AddSharpenToGLUI(GLUI_Panel* filter_panel, void (*s_gluicallback)(int))</p>
+	<p style="margin-left:100px;">void AddEdgeDetectToGLUI(GLUI_Panel* filter_panel, void (*s_gluicallback)(int))</p>
+	<p style="margin-left:100px;">void AddThresholdToGLUI(GLUI_Panel* filter_panel, void (*s_gluicallback)(int))</p>
+	<p style="margin-left:100px;">void AddBlurToGLUI(GLUI_Panel* filter_panel, void (*s_gluicallback)(int))</p>
+	<p style="margin-left:100px;">void AddSaturationToGLUI(GLUI_Panel* filter_panel, void (*s_gluicallback)(int))</p>
+	<p style="margin-left:100px;">void AddChannelToGLUI(GLUI_Panel* filter_panel, void (*s_gluicallback)(int))</p>
+	<p style="margin-left:100px;">void AddQuantizationToGLUI(GLUI_Panel* filter_panel, void (*s_gluicallback)(int))</p>
+	<br>
+</div>
+
+
+	<a href="../src/app/MIA/src/mia_io_manager.cc">mia_io_manager.cc</a>
+	<p style="margin-left:20px;color:#708090;font-weight:bold;">Description: This class allows for image processing for the MIA application. It allows for next and previous loading as well.</p>
+				<div style = "color:#000080;">
+	<p style="margin-left:40px;">Functions:</p>
+	<p style="margin-left:100px;">GLUI_Panel* MIAIOManager::InitGlui(const GLUI *const glui,
+                         void (*s_gluicallback)(int))</p>
+	<p style="margin-left:100px;">void MIAIOManager::LoadNextImage(void)</p>
+	<p style="margin-left:100px;">void MIAIOManager::LoadPreviousImage(void)</p>
+	<p style="margin-left:100px;">void MIAIOManager::LoadImageToCanvas(void)</p>
+	<p style="margin-left:100px;">void MIAIOManager::set_image_file(const std::string & fname_in)</p>
+	<p style="margin-left:100px;">std::string MIAIOManager::image_name_plus_seq_offset(
+    const std::string& filename, int offset)</p>
+	<p style="margin-left:100px;">void AddFileBrowserToGLUI(GLUI_Panel* image_panel, void (*s_gluicallback)(int))</p>
+	<p style="margin-left:100px;">void AddSaveCanvasToGLUI(GLUI_Panel* image_panel, void (*s_gluicallback)(int))</p>
+</div>
+
+</div>
+
+</div>
+
+	<div class = "footer">
+		<span class="copyright">&copy; 2016, CSCI 3081 Derek Goodwin, Andrew Bostrom and Michael Major</span>
+	</div>
+</div>
+
+</body>
+
+</html>

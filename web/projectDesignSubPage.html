@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta charset = "utf-8">
+	<title> Project Design Subpage </title>
+	<link class = "page" rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+<nav>
+  <a href="index.html" class = "page"> Home </a> |
+  <a href="usersupport.html" class = "page"> User Support </a> |
+  <a href="developersupport.html" class = "page"> Developer Support</a>
+</nav>
+
+<h1> Project Design </h1>
+
+<p style = "text-align:center;"><img src = "images/design.png" alt = " obtained from http://www.mascotdesigngallery.com/wp/wp-content/uploads/2013/08/6-programmer-mascot.png"
+  style = "width:400px;height400px;"></p>
+
+<h2>What is found in src/app/FlashPhoto/src:</h2>
+
+<p style = "margin-left:20px;color:blue;">Description: These files have been placed here so that they can be accessed
+	 only by FlashPhoto.</p>
+<p style = "margin-left:110px;color:blue;">flashphoto_app.cc contains tools that are unneccessary for MIA which is why it is in this separate directory.</p>
+
+<div style = "margin-left:40px;">
+<p> flashphoto_app.cc </p>
+<p> main.cc </p>
+</div>
+
+<h2>What is found in src/app/MIA/src:</h2>
+
+<p style = "margin-left:20px;color:blue;">Description: These files have been placed here so that they can be accessed
+	 only by MIA.</p>
+<p style = "margin-left:110px;color:blue;">main.cc handles all of the command line arguments for MIA.</p>
+
+<div style = "margin-left:40px;">
+<p> main.cc </p>
+<p> mia_app.cc </p>
+<p> mia_filter_manager.cc </p>
+<p> mia_io_manager.cc </p>
+</div>
+
+<h2>What is found in src/lib/libimgtools/src:</h2>
+
+<p style = "margin-left:20px;color:blue;">Description: These files have been placed here so that they can be accessed
+	 by both programs; MIA and FlashPhoto. The static library is in this directory
+	  and is why we put the files here.</p>
+<p style = "margin-left:110px;color:blue;">The superclasses for GLUI, ColorData, Filters, Tools, Masks, and kernals are also located here so that they can be accessed by both programs.</p>
+<p style = "margin-left:110px;color:blue;">All of the complete sublasses can also be found here.</p>
+<div style = "margin-left:40px;">
+<p> base_gfx_app.cc </p>
+<p> color_data.cc </p>
+<p> f_channel.cc </p>
+<p> filter.cc </p>
+<p> filter_convlove.cc </p>
+<p> filter_factory.cc </p>
+<p> filter_manager.cc </p>
+<p> float_matrix.cc </p>
+<p> f_quantize.cc </p>
+<p> f_saturate.cc </p>
+<p> f_special.cc </p>
+<p> f_threshold.cc </p>
+<p> i_jpeg_handler.cc </p>
+<p> image_handler.cc </p>
+<p> io_manager.cc </p>
+<p> i_png_handler.cc </p>
+<p> k_edge.cc </p>
+<p> kernal.cc </p>
+<p> k_gaussian.cc </p>
+<p> k_motion_blur.cc </p>
+<p> k_sharpen.cc </p>
+<p> mask.cc </p>
+<p> m_constant.cc </p>
+<p> m_linear.cc </p>
+<p> m_oval.cc </p>
+<p> pixel_buffer.cc </p>
+<p> state_manager.cc </p>
+<p> t_blur.cc </p>
+<p> t_chalk.cc </p>
+<p> t_eraser.cc </p>
+<p> t_highlighter.cc </p>
+<p> tool.cc </p>
+<p> tool_factory.cc </p>
+<p> t_stamp.cc </p>
+</div>
+
+<div class = "footer">
+	<span class="copyright">&copy; 2016, CSCI 3081 Derek Goodwin, Andrew Bostrom and Michael Major</span>
+</div>
+
+</body>
+
+</html>

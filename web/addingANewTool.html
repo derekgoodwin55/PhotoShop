@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+
+<html lang = "en">
+
+<head>
+	<meta charset = "utf-8">
+	<title> New Tool Tutorial </title>
+	<link class = "page" rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+<nav>
+  <a href="index.html" class = "page"> Home </a> |
+  <a href="usersupport.html" class = "page"> User Support </a> |
+  <a href="developersupport.html" class = "page"> Developer Support</a>
+</nav>
+
+<h1> Adding a New Tool Tutorial </h1>
+
+<p style = "text-align:center;"><img src = "images/toolbox.png" alt = " obtained from
+	http://www.clipartkid.com/images/500/red-toolbox-full-clip-art-at-clker-com-vector-clip-art-online-3E0g7d-clipart.png"
+  style = "width:400px;height400px;"></p>
+
+<h2 style = "color:red;">How to Add a New Tool:</h2>
+
+<br>
+
+<h2> Step 1</h2>
+<p style="margin-left:20px;">Navigate to src/app/Flashphoto/src for adding a tool there, or navigate
+	 to src/app/MIA/src to add a tool to that program instead.</p>
+<br>
+
+<h2> Step 2</h2>
+<p style="margin-left:20px;">Create a .cc file with the desired tool name.</p>
+<br>
+
+<h2> Step 3</h2>
+<p style="margin-left:20px;">Navigate to the include folder (within the same directory as the .cc document). Create a .h file that has the same name as
+	the .cc file you just created.</p>
+
+<br>
+<p style = "color:red;font-style:italic;margin-left:450px;margin-right:450px;"> We will use Pencil.h and Pencil.cc for our example.</p>
+<br>
+
+<h2>Step 4</h2>
+<p style="margin-left:20px;">Write the .cc and .h files you created. Below is a template of how we would implement our example tool.</p>
+<br>
+
+<div id = "hFile" style = "overflow:auto;">
+<p style = "font-weight:italic;color:red;"> Here is what Pencil.h would look like:</p>
+<p>#ifndef SRC_APP_FLASHPHOTO_SRC_INCLUDE_T_PENCIL_H_</p>
+<p>#define SRC_APP_FLASHPHOTO_SRC_INCLUDE_T_PENCIL_H_</p>
+<p>#include "lib/libimgtools/src/include/tool.h"</p>
+<p>namespace image_tools {</p>
+<p style = "margin-left:20px;">class TPencil : public Tool {</p>
+<p style = "margin-left:40px;">public:</p>
+<p style = "margin-left:60px;">  TPencil(void);</p>
+<p style = "margin-left:60px;">  // You can change the size of the tool, the color, etc.</p>
+<p style = "margin-left:60px;">  ColorData color_blend_math(</p>
+<p style = "margin-left:100px;">      float mask_pixel_amount,</p>
+<p style = "margin-left:100px;">      ColorData tool_color,</p>
+<p style = "margin-left:100px;">      ColorData current_color,</p>
+<p style = "margin-left:100px;">      ColorData background_color);</p>
+<p style = "margin-left:60px;">  std::string name(void) { return "Pencil"; }</p>
+<p style = "margin-left:20px;">};</p>
+<p>}  /* namespace image_tools */</p>
+<p>#endif  // SRC_APP_FLASHPHOTO_SRC_INCLUDE_T_PENCIL_H_</P>
+</div>
+
+<p style = "font-weight:italic;color:red;"> Here is what Pencil.cc would look like after a constructor and delete method:</p>
+<p style="margin-left:40px;color:blue;">#include "include/drawing_tool.h"</p>
+<p style="margin-left:40px;color:blue;">#include "include/Pencil.h"</p>
+<br>
+<p style="margin-left:40px;color:blue;">namespace image_tools {</p>
+<p style="margin-left:40px;color:blue;">class PencilTool : public DrawingTool {
+<p style="margin-left:80px;color:blue;"> public:</p>
+<p style="margin-left:90px;color:blue;">  PencilTool(void);</p>
+<p style="margin-left:90px;color:blue;">  ~PencilTool(void);</p>
+<p style="margin-left:80px;color:blue;"> private:</p>
+<p style="margin-left:40px;color:blue;">};</p>
+<p style="margin-left:40px;color:blue;">}  // namespace image_tools</p>
+<p style="margin-left:40px;color:blue;">#endif  // INCLUDE_PENCIL_H_</p>
+
+<br><br><br><br><br><br><br><br><br><br>
+
+<h2>Step 5</h2>
+<p style="margin-left:20px;">Navigate to src/lib/libimgtools/src/tool_factory.cc</p>
+<p style="margin-left:20px;">In the switch statement, add a new case.</p>
+<p style="margin-left:20px;">This case should be TOOL_(name of tool): <i style = "color:red;margin-left:30px;">Our tool, Pencil, would be case TOOL_PENCIL:</i></p>
+<p style="margin-left:20px;">Underneath the case, add tool = new T(tool name)(). <i style = "color:red;margin-left:30px;">Our example would be tool = new TPencil();</i></p>
+<p style="margin-left:20px;">Underneath this, add break;</p>
+
+<p style="color:red;font-weight:italic"> Our Example: </p>
+<p style="margin-left:40px;color:blue;">case TOOL_PENCIL:</p>
+<p style="margin-left:60px;color:blue;">tool = new TPencil();</p>
+<p style="margin-left:60px;color:blue;">break;</p>
+<br>
+
+<h2>Step 6</h2>
+<p style="margin-left:20px;">Navigate to src/lib/libimgtools/src/include/tool_factory.h</p>
+<p style="margin-left:20px;">There is a variable called NUMTOOLS. Increment this value by 1 from what it currently is.</p>
+<p style="margin-left:20px;">Above this, add the new tool to the list. Give it a valid index between 0 and (NUMTOOLS -1) that is not already in used by the tools above.</p>
+
+<div id = "afterADD">
+	<p style="color:red;font-weight:italic"> After Pencil has been added: </p>
+	<p>enum TOOLS {</p>
+	<p style = "margin-left:40px;">	TOOL_PEN = 0,</p>
+	<p style = "margin-left:40px;">	TOOL_ERASER = 1,</p>
+	<p style = "margin-left:40px;">	TOOL_SPRAYCAN = 2,</p>
+	<p style = "margin-left:40px;">	TOOL_CALLIGRAPHYPEN = 3,</p>
+	<p style = "margin-left:40px;">	TOOL_HIGHLIGHTER = 4,</p>
+	<p style = "margin-left:40px;">	TOOL_STAMP = 5,</p>
+	<p style = "margin-left:40px;">	TOOL_BLUR = 6,</p>
+	<p style = "margin-left:40px;">	TOOL_CHALK = 7,</p>
+	<p style = "margin-left:40px;">	TOOL_PENCIL = 8,</p>
+	<p style = "margin-left:40px;">	NUMTOOLS = 9</p>
+	<p>};</p>
+</div>
+
+<br>
+
+<div style="color:blue;">
+<p style="color:red;font-weight:italic"> Before Pencil has been added: </p>
+<p>enum TOOLS {</p>
+<p style = "margin-left:40px;">	TOOL_PEN = 0,</p>
+<p style = "margin-left:40px;">	TOOL_ERASER = 1,</p>
+<p style = "margin-left:40px;">	TOOL_SPRAYCAN = 2,</p>
+<p style = "margin-left:40px;">	TOOL_CALLIGRAPHYPEN = 3,</p>
+<p style = "margin-left:40px;">	TOOL_HIGHLIGHTER = 4,</p>
+<p style = "margin-left:40px;">	TOOL_STAMP = 5,</p>
+<p style = "margin-left:40px;">	TOOL_BLUR = 6,</p>
+<p style = "margin-left:40px;">	TOOL_CHALK = 7,</p>
+<p style = "margin-left:40px;">	NUMTOOLS = 8</p>
+<p>};</p>
+</div>
+
+<br>
+
+<h2>Step 7</h2>
+<p style="margin-left:20px;">Congratulations! You've added a tool to the program.</p>
+
+<div class = "footer">
+	<span class="copyright">&copy; 2016, CSCI 3081 Derek Goodwin, Andrew Bostrom
+		 and Michael Major</span>
+</div>
+
+</body>
+
+</html>

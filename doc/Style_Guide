@@ -1,0 +1,52 @@
+FLASHPHOTO:
+
+ Classes:
+
+  base_gfx_app.cc
+  color_data.cc
+  f_channel.cc
+  filter.cc
+  filter_convolve.cc
+  filter_factory.cc
+  filter_manager.cc
+  flashphoto_app.cc
+  float_matrix.cc
+  f_quantize.cc
+  f_saturate.cc
+  f_special.cc
+  f_threshold.cc
+  f_jpeg_handler.cc
+  image_handler.cc
+  io_manager.cc
+  i_png_handler.cc
+  k_edge.cc
+  kernel.cc
+  k_gaussian.cc
+  k_motion_blur.cc
+  k_sharpen.cc
+  main.cc
+  mask.cc
+  m_constant.cc
+  m_linear.cc
+  m_ocal.cc
+  pixel_buffer.cc
+  statemanager.cc
+  t_blur.cc
+  t_chalk.cc
+  t_eraser.cc
+  t_highlighter.cc
+  tool.cc
+  tool_factory.cc
+  t_stamp.cc
+
+
+MIA:
+
+ Classes:
+
+  main.cc
+  mia_app.cc
+  mia_filter_manager.cc
+  mia_io_manager.cc
+
+Tips on Using our Code:

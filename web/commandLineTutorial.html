@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta charset = "utf-8">
+	<title> Command Line Tutorial </title>
+	<link class = "page" rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+<nav>
+  <a href="index.html" class = "page"> Home </a> |
+  <a href="usersupport.html" class = "page"> User Support </a> |
+  <a href="developersupport.html" class = "page"> Developer Support</a>
+</nav>
+
+<h1> Using the Command Line </h1>
+
+<p style = "text-align:center;"><img src = "images/commandLine.png" alt = " obtained from https://www.playframework.com/documentation/2.0.4/resources/manual/scalaGuide/tutorials/todolist/images/new.png"
+  style = "width:400px;height400px;"></p>
+
+<br>
+
+<h3 style = "color:red;">**First, make sure the terminal is open in the correct directory **</h3>
+<p style = "color:red;margin-left:20px;">The picture below is the main directory. This is the necessary directory to be in when working from the command line.</p>
+<p style = "margin-left:100px;"><img src = "images/directory.png" alt = "directory"
+  style = "width:1000px;height1000px;"></p>
+<p style = "color:red;margin-left:20px;">1.) From this directory, right-click any white space. Do not right click a folder. There should be an option that says "Open in Terminal."</p>
+<p style = "color:red;margin-left:20px;">2.) Click that option.</p>
+<p style = "color:red;margin-left:50px;">If you do not see a build directory, type "mkdir build."</p>
+<p style = "color:red;margin-left:20px;">3.) Make the program by typing "make".</p>
+
+<br>
+
+<h2>Using the MIA Application from the command line</h2>
+
+<p style = "color:red;margin-left:20px;"> Unless using the help command, the first argument must be the path to MIA which is: ./build/MIA/bin/MIA</p>
+<p style = "color:red;margin-left:20px;"> Add a space. </p>
+<p style = "color:red;margin-left:20px;">	The next argument must be an image path. </p>
+<p style = "color:red;margin-left:20px;"> Add a space. </p>
+<p style = "color:red;margin-left:20px;"> Use any of the commands below. You can use multiple as long as they are separated by a space. </p>
+<p style = "color:red;margin-left:20px;"> The last argument is the name of the file to be saved. You can include a path name to save the file to a specific path. </p>
+
+<br>
+
+<h3 style = "color:#006400">Complete list of command-line arguments: </h3>
+
+	 <p style="margin-left:40px;">-h</p>
+	 <p style="margin-left:40px;">-sharpen <i>float</i></p>
+	 <p style="margin-left:40px;">-edge</p>
+   <p style="margin-left:40px;">-threshold <i>float</i></p>
+	 <p style="margin-left:40px;">-quantize <i>int</i></p>
+	 <p style="margin-left:40px;">-blur <i>float</i></p>
+	 <p style="margin-left:40px;">-saturate <i>float</i></p>
+   <p style="margin-left:40px;">-channel <i>float float float</i></p>
+	 <p style="margin-left:40px;"><i>first_image</i>  -compare  <i>second_image</i></p>
+
+<br>
+
+<h3> Examples: </h3>
+
+<h4 style = "color:#006400">Display help (determine your own good format for a useful help
+	 message): </h4>
+
+	 <p style="margin-left:40px;">./build/MIA/bin/MIA -h</p>
+
+<h4 style = "color:#006400">Convert an image in JPG format to PNG format: </h4>
+
+	 <p style="margin-left:40px;">./build/MIA/bin/MIA in_file_name.jpg out_file_name.png</p>
+
+<h4 style = "color:#006400">Convert an image in PNG format to JPG format: </h4>
+
+   <p style="margin-left:40px;">./build/MIA/bin/MIA in_file_name.png out_file_name.jpg</p>
+
+<h4 style = "color:#006400">Sharpen an image by amount 5 and save the output to a new image: </h4>
+
+	 <p style="margin-left:40px;">./build/MIA/bin/MIA in.png –sharpen 5 out.png</p>
+
+<h4 style = "color:#006400">Sharpen an image by amount 5, then run an edge detection filter, then save
+	 the output to a new image: </h4>
+
+	 <p style="margin-left:40px;">./build/MIA/bin/MIA in.png –sharpen 5 –edge out.png</p>
+
+<h4 style = "color:#006400">Apply commands to each image in a sequence that matches the naming scheme
+	###. (where ### is a three-digit number from 000 to 999): </h4>
+
+	 <p style="margin-left:40px;">./build/MIA/bin/MIA resources/test-images/brainstack/mrbrain-8bit###.png
+		  –sharpen 5 output/sharp-brain###.jpg</p>
+
+<h4 style = "color:#006400">Compare 2 images. This prints “1” if the two
+	  images are identical and prints “0” if they are different: </h4>
+
+	 <p style="margin-left:40px;">./build/MIA/bin/MIA image1.png –compare image2.png</p>
+
+<div class = "footer">
+	<span class="copyright">&copy; 2016, CSCI 3081 Derek Goodwin, Andrew Bostrom and Michael Major</span>
+</div>
+
+</body>
+
+</html>

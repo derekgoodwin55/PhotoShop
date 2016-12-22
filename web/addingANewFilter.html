@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta charset = "utf-8">
+	<title> Adding a New Filter </title>
+	<link class = "page" rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+<nav>
+  <a href="index.html" class = "page"> Home </a> |
+  <a href="usersupport.html" class = "page"> User Support </a> |
+  <a href="developersupport.html" class = "page"> Developer Support</a>
+</nav>
+
+<h1> Adding a New Filter Tutorial</h1>
+
+<p style = "text-align:center;"><img src = "images/filter.jpg" alt = " obtained from https://upload.wikimedia.org/wikipedia/commons/5/5e/Neutral_density_filter_demonstration.jpg"
+  style = "width:400px;height400px;"></p>
+
+<h2 style = "color:red;">How to Add a New Filter:</h2>
+
+<br>
+
+<h2>Step 1</h2>
+
+<p style="margin-left:20px;">Navigate to src/lib/libimgtools/src</p>
+
+<br>
+
+<h2>Step 2</h2>
+<p style="margin-left:20px;"> Create a .cc file with the name of the filter you
+	 would like to add. We strongly recommend adding a f_ precedent to the filter name.</p>
+<p style="margin-left:40px;"> Note: making changes here would affect both programs MIA and FlashPhoto.</p>
+
+<br>
+
+<h2>Step 3</h2>
+<p style="margin-left:20px;"> Navigate to the include folder (within the same
+	directory as the .cc document). Create a .h file that has the same name as
+	the .cc file you just created.</p>
+
+<br>
+<p style = "color:red;font-style:italic;margin-left:450px;margin-right:450px;"> We will use f_invert.h and f_invert.cc for our example.</p>
+<br>
+
+<h2>Step 4</h2>
+<p style="margin-left:20px;">Write functions for the .cc and .h files you created. Below is a template of how we would implement our example filter.</p>
+<br>
+<div id = "filterH" style = "color:blue;overflow:auto;">
+<p style = "font-weight:italic;color:red;"> Here is what f_invert.h would look like:</p>
+<p>#ifndef SRC_APP_FLASHPHOTO_SRC_INCLUDE_F_INVERT_H_</p>
+<p>#define SRC_APP_FLASHPHOTO_SRC_INCLUDE_F_INVERT_H_</p>
+
+<p>#include "lib/libimgtools/src/include/filter.h"</p>
+<p>#include "lib/libimgtools/src/include/pixel_buffer.h"</p>
+<p>#include "lib/libimgtools/src/include/color_data.h"</p>
+
+<p>namespace image_tools {</p>
+
+<p style = "margin-left:20px;">class FInvert : public Filter {</p>
+<p style = "margin-left:40px;"> public:</p>
+<p style = "margin-left:60px;">  explicit FInvert(float amount) : amount_(amount) {}</p>
+
+<p style = "margin-left:40px;"> private:</p>
+<p style = "margin-left:60px;">  virtual ColorData GeneratePixel(const PixelBuffer & buffer,
+                                   int x, int y) const;</p>
+
+<p style = "margin-left:60px;">  float amount_;</p>
+<p style = "margin-left:20px;">};</p>
+
+<p>} /* namespace image_tools */</p>
+
+<p>#endif  /* SRC_APP_FLASHPHOTO_SRC_INCLUDE_F_INVERT_H_ */</p>
+</div>
+
+<div style = "color:blue;">
+	<p style = "font-weight:italic;color:red;"> Here is what f_invert.cc would look like:</p>
+<p>#include "lib/libimgtools/src/include/f_invert.h"</p>
+<p>#include "lib/libimgtools/src/include/color_data.h"</p>
+<p>#include "lib/libimgtools/src/include/pixel_buffer.h"</p>
+<p>#include "lib/libimgtools/src/include/helpers.h"</p>
+<p>namespace image_tools {</p>
+<p>ColorData FInvert::GeneratePixel(const PixelBuffer &buffer,
+                                    int x, int y) const {</p>
+<p style = "margin-left:20px;">  ColorData c = buffer.get_pixel(x, y);</p>
+<p style = "margin-left:20px;">  float lum = c.luminance();</p>
+<p style = "margin-left:20px;">  ColorData gray(lum, lum, lum);</p>
+<p style = "margin-left:20px;">  ColorData output = helpers::lerp(gray, c, amount_);</p>
+<p style = "margin-left:20px;">  return output;</p>
+<p>}</p>
+<p>} /* namespace image_tools */</p>
+</div>
+
+<br><br><br><br>
+<h2>Step 5</h2>
+<p style="margin-left:20px;">Navigate to src/lib/libimgtools/src/filter_factory.cc</p>
+<p style="margin-left:20px;">In the switch statement, add a new case.</p>
+<p style="margin-left:20px;">This case should be FILTER_(name of filter):</p>
+<p style="margin-left:20px;">Underneath the case, add f = new F(filter name)(<i>matching number of arguments from .cc and .h file implementation</i>).</p>
+<p style="margin-left:20px;">Underneath this, add break;</p>
+
+<p style="color:red;font-weight:italic"> Our Example: </p>
+<p style="margin-left:40px;color:blue;">case FILTER_INVERT:</p>
+<p style="margin-left:60px;color:blue;">f = new FInvert(va_arg(vl, double));</p>
+<p style="margin-left:60px;color:blue;">break;</p>
+<br>
+
+<h2>Step 6</h2>
+<p style="margin-left:20px;">Navigate to src/lib/libimgtools/src/include/filter_factory.h</p>
+<p style="margin-left:20px;">Above NUMFILTERS in the enum, add the new filter to the list following the naming convention.</p>
+
+<div id = "afterADD">
+	<p style="color:red;font-weight:italic"> After Inver has been added: </p>
+	<p>enum {</p>
+	<p style = "margin-left:40px;">FILTER_BLUR,</p>
+	<p style = "margin-left:40px;">FILTER_MOTION_BLUR,</p>
+	<p style = "margin-left:40px;">FILTER_SHARPEN,</p>
+	<p style = "margin-left:40px;">FILTER_EDGE_DETECT,</p>
+	<p style = "margin-left:40px;">FILTER_SATURATION,</p>
+	<p style = "margin-left:40px;">FILTER_QUANTIZE,</p>
+	<p style = "margin-left:40px;">FILTER_THRESHOLD,</p>
+	<p style = "margin-left:40px;">FILTER_CHANNELS,</p>
+	<p style = "margin-left:40px;">FILTER_SPECIAL,</p>
+	<p style = "margin-left:40px;">FILTER_INVERT,</p>
+	<p style = "margin-left:40px;">NUMFILTERS</p>
+	<p>};</p>
+</div>
+
+<br>
+
+<div style="color:blue;">
+<p style="color:red;font-weight:italic"> Before Invert has been added: </p>
+	<p>enum {</p>
+	<p style = "margin-left:40px;">FILTER_BLUR,</p>
+	<p style = "margin-left:40px;">FILTER_MOTION_BLUR,</p>
+	<p style = "margin-left:40px;">FILTER_SHARPEN,</p>
+	<p style = "margin-left:40px;">FILTER_EDGE_DETECT,</p>
+	<p style = "margin-left:40px;">FILTER_SATURATION,</p>
+	<p style = "margin-left:40px;">FILTER_QUANTIZE,</p>
+	<p style = "margin-left:40px;">FILTER_THRESHOLD,</p>
+	<p style = "margin-left:40px;">FILTER_CHANNELS,</p>
+	<p style = "margin-left:40px;">FILTER_SPECIAL,</p>
+	<p style = "margin-left:40px;">NUMFILTERS</p>
+	<p>};</p>
+</div>
+
+<br>
+
+<h2>Step 7</h2>
+<p style="margin-left:20px;">Congratulations! You've added a filter to the program.</p>
+
+
+<div class = "footer">
+	<span class="copyright">&copy; 2016, CSCI 3081 Derek Goodwin, Andrew Bostrom
+		 and Michael Major</span>
+</div>
+
+</body>
+
+</html>
